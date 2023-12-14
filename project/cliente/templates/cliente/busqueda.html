@@ -21,14 +21,16 @@
         <p>{{ cliente}}</p>
     {% endfor %}
 
-{% endblock contenido %}
+
 
 {% block contenidoQueCambia %}
     <body style="background-color: green;">
-        <form action="/cliente/busqueda" method="POST">
+        <form action="/busqueda" method="POST">
             {% csrf_token %}
             {{ form.as_table }}
-            <input type="submit" value="Guardar">
+            <input type="submit" value="Buscar">
         </form>
     </body>
 {% endblock %}
+
+{% endblock contenido %}

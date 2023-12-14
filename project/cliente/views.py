@@ -16,7 +16,7 @@ def home(request):
 
 
 
-def busqueda(request):
+#def busqueda(request):
 
     # búsqueda por nombre que contenga "dana"
     cliente_nombre = models.Cliente.objects.filter(nombre__contains="franco")
@@ -55,7 +55,7 @@ def busqueda(request):
         form = ClienteBuscarFormulario()
         return render(
             request,
-            "Cliente/busqueda.html",
+            "cliente/busqueda.html",
             context={"form": form}
         )
     else:
@@ -63,8 +63,8 @@ def busqueda(request):
         if formulario.is_valid():
             informacion = formulario.cleaned_data
             cursos_filtrados = []
-            for curso in Cliente.objects.filter(cliente=informacion["cliente"]):
-                cursos_filtrados.append(cliente)
+            for curso in Cliente.objects.filter(cliente=informacion["nombre"]):
+                cursos_filtrados.append(Cliente)
 
             contexto = {"cliente": cursos_filtrados}
-            return render(request, "Cliente/busqueda.html", contexto)
+            return render(request, "cliente/busqueda.html", contexto)
